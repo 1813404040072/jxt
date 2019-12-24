@@ -1,0 +1,13 @@
+
+// jhipster import-jdl ./jtx_gender/jtx-product.jdl --skip-db-changelog
+
+entity Product {
+    code String required
+    name String required
+    description String
+    unit Long required
+    price BigDecimal
+}
+
+service Product with serviceImpl
+paginate Product with pagination

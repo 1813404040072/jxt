@@ -1,0 +1,101 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-order-heading">Create or edit a Order</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_customerId">Customer Id</label>
+                    <input type="number" class="form-control" name="customerId" id="field_customerId"
+                           formControlName="customerId"/>
+                    <div *ngIf="editForm.get('customerId').invalid && (editForm.get('customerId').dirty || editForm.get('customerId').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('customerId').errors.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('customerId')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_orderDate">Order Date</label>
+                    <div class="input-group">
+                        <input id="field_orderDate" type="text" class="form-control" name="orderDate" ngbDatepicker  #orderDateDp="ngbDatepicker" formControlName="orderDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="orderDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_invoiceStatus">Invoice Status</label>
+                    <input type="number" class="form-control" name="invoiceStatus" id="field_invoiceStatus"
+                           formControlName="invoiceStatus"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_net">Net</label>
+                    <input type="number" class="form-control" name="net" id="field_net"
+                           formControlName="net"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_shippingCost">Shipping Cost</label>
+                    <input type="number" class="form-control" name="shippingCost" id="field_shippingCost"
+                           formControlName="shippingCost"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_note">Note</label>
+                    <input type="text" class="form-control" name="note" id="field_note"
+                           formControlName="note"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_total">Total</label>
+                    <input type="number" class="form-control" name="total" id="field_total"
+                           formControlName="total"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdDate">Created Date</label>
+                    <div class="input-group">
+                        <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" formControlName="createdDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdBy">Created By</label>
+                    <input type="number" class="form-control" name="createdBy" id="field_createdBy"
+                           formControlName="createdBy"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modifiedDate">Modified Date</label>
+                    <div class="input-group">
+                        <input id="field_modifiedDate" type="text" class="form-control" name="modifiedDate" ngbDatepicker  #modifiedDateDp="ngbDatepicker" formControlName="modifiedDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="modifiedDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_modifiedBy">Modified By</label>
+                    <input type="number" class="form-control" name="modifiedBy" id="field_modifiedBy"
+                           formControlName="modifiedBy"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

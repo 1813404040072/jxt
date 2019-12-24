@@ -1,0 +1,19 @@
+
+// jhipster import-jdl ./jtx_gender/jtx-order.jdl --skip-db-changelog
+
+entity Order {
+    customerId Long required
+    orderDate LocalDate
+    invoiceStatus Integer
+    net BigDecimal
+    shippingCost BigDecimal
+    note String
+    total BigDecimal
+    createdDate LocalDate
+    createdBy Long
+    modifiedDate LocalDate
+    modifiedBy Long
+}
+
+service Order with serviceImpl
+paginate Order with pagination

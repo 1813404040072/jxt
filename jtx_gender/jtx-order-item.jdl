@@ -1,0 +1,14 @@
+
+// jhipster import-jdl ./jtx_gender/jtx-order-item.jdl --skip-db-changelog
+
+entity OrderItem {
+    orderId Long required
+    orderDate Long required
+    productId Long required
+    quantity BigDecimal
+    adjusted BigDecimal
+    price BigDecimal
+}
+
+service OrderItem with serviceImpl
+paginate OrderItem with pagination

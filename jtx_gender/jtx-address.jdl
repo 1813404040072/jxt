@@ -1,0 +1,12 @@
+
+// jhipster import-jdl ./jtx_gender/jtx-address.jdl --skip-db-changelog
+
+entity Address {
+    customerId Long required
+    address String required
+    phone String
+    email String
+}
+
+service Address with serviceImpl
+paginate Address with pagination

@@ -1,0 +1,10 @@
+
+// jhipster import-jdl ./jtx_gender/jtx-catalog.jdl --skip-db-changelog
+
+entity Catalog {
+    type String required
+    name String required
+}
+
+service Catalog with serviceImpl
+paginate Catalog with pagination

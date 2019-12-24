@@ -1,0 +1,16 @@
+
+// jhipster import-jdl ./jtx_gender/jtx-customer.jdl --skip-db-changelog
+
+entity Customer {
+    name String required
+    address String
+    phone String
+    sourceType String
+    createdDate LocalDate
+    createdBy Long
+    modifiedDate LocalDate
+    modifiedBy Long
+}
+
+service Customer with serviceImpl
+paginate Customer with pagination
